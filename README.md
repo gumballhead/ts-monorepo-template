@@ -1,7 +1,7 @@
 ts-monorepo-template
 --------------------
 
-![tests](https://github.com/gumballhead/ts-monorepo-template/workflows/tests/badge.svg)
+[![tests](https://github.com/gumballhead/ts-monorepo-template/workflows/tests/badge.svg)](https://github.com/gumballhead/ts-monorepo-template/actions?query=workflow%3Atests)
 
 ## Setup
 
