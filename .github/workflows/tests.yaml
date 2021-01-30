@@ -1,0 +1,31 @@
+name: tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint code
+        run: yarn lint
+
+      - name: Start app
+        run: yarn start -d
+
+      - name: Run unit and integration tests
+        run: yarn workspace tests test
+
+      - name: Run acceptance tests
+        run: yarn workspace features test
+        env:
+          CYPRESS_BASE_URL: http://localhost
