@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "clean": "rimraf videos screenshots",
-        "start": "cypress open",
+        "start": "cypress open --config testFiles='*.feature'",
         "test": "cypress run --spec all.features"
     },
     "dependencies": {
