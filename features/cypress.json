@@ -1,0 +1,13 @@
+{
+    "baseUrl": "http://localhost:8080",
+    "testFiles": "*.{feature,features}",
+    "ignoreTestFiles": ["*.ts"],
+    "integrationFolder": ".",
+    "fixturesFolder": "fixtures",
+    "pluginsFile": "plugins.ts",
+    "supportFile": "support.ts",
+    "screenshotsFolder": "screenshots",
+    "videosFolder": "videos",
+    "screenshotOnRunFailure": false,
+    "video": false
+}

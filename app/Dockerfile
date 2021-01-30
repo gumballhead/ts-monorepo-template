@@ -1,0 +1,34 @@
+FROM node:lts-alpine3.12 as base
+ENV APP_PORT ${APP_PORT}
+ENV NODE_ENV development
+
+WORKDIR /home/node/app
+COPY package.json .yarnrc.yml yarn.lock ./
+COPY .yarn ./.yarn
+COPY app/package.json ./app/
+COPY lib/package.json ./lib/
+RUN yarn workspace app install
+
+COPY tsconfig.json tsconfig.base.json ./
+
+EXPOSE ${APP_PORT}
+ENTRYPOINT ["yarn", "workspace", "app"]
+CMD ["start"]
+
+FROM node:lts-alpine3.12 as build
+WORKDIR /home/node/app
+COPY --from=base /home/node/app ./
+
+RUN yarn workspace app install
+COPY app ./app
+COPY lib ./lib
+RUN yarn workspace app build
+RUN yarn cache clean
+
+FROM nginx:stable as router
+ENV API_PORT ${API_PORT}
+COPY --from=build /home/node/app/app/dist /srv/app
+COPY app/nginx.conf /etc/nginx/templates/default.conf.template
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

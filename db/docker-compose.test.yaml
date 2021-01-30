@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  sut:
+    build:
+      context: ..
+      dockerfile: tests/db/Dockerfile
+    environment:
+      DB_URL: postgres://postgres:postgres@db:5432/app
+    depends_on:
+      - migrate
+
+  migrate:
+    build:
+      context: ..
+      dockerfile: db/Dockerfile
+    environment:
+      DB_URL: postgres://postgres:postgres@db:5432/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:13.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      retries: 10

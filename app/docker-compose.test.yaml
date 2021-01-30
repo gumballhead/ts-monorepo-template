@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  sut:
+    build:
+      context: ..
+      dockerfile: tests/app/Dockerfile
+    environment:
+      CYPRESS_BASE_URL: http://localhost:8080
+    depends_on:
+      api:
+        condition: service_healthy
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    environment:
+      API_PORT: 3000
+      DB_URL: postgres://postgres:postgres@db:5432/app
+    depends_on:
+      - migrate
+    healthcheck:
+      test: ["CMD-SHELL", "node api/healthy"]
+      interval: 1s
+      retries: 10
+
+  migrate:
+    build:
+      context: .
+      dockerfile: db/Dockerfile
+    environment:
+      DB_URL: postgres://postgres:postgres@db:5432/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:13.1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      retries: 10
