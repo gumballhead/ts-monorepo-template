@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   tests:
+    name: Run unit and integration tests
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +21,27 @@ jobs:
         run: yarn lint
 
       - name: Start app
-        run: yarn start -d
+        run: yarn dev -d
 
       - name: Run unit and integration tests
         run: yarn workspace tests test
-        env:
-          API_URL: http://localhost/api
+
+  features:
+    name: Run acceptance tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Start app
+        run: yarn start -d
 
       - name: Run acceptance tests
         run: yarn workspace features test
