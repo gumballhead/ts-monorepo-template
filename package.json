@@ -8,10 +8,10 @@
     "private": true,
     "scripts": {
         "lint": "eslint '**/*.{ts,tsx}'",
-        "build": "tsc -b",
-        "clean": "tsc -b --clean",
+        "clean": "tsc -b --clean && yarn workspace app clean",
         "predev": "docker-compose down",
         "dev": "yarn predev && DOCKER_BUILDKIT=1 docker-compose up --build",
+        "build": "DOCKER_BUILDKIT=1 docker-compose --file docker-compose.yaml build",
         "prestart": "docker-compose --file docker-compose.yaml down",
         "start": "yarn prestart && DOCKER_BUILDKIT=1 docker-compose --file docker-compose.yaml up --build",
         "pretest": "DOCKER_BUILDKIT=1 docker-compose --file docker-compose.test.yaml build && docker-compose --file docker-compose.test.yaml down",

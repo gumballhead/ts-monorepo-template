@@ -17,7 +17,6 @@ git config core.hooksPath .githooks
 ```
 
 ## Commands
-
 ### start
 
 Start the app in production mode
