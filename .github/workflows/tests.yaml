@@ -24,6 +24,8 @@ jobs:
 
       - name: Run unit and integration tests
         run: yarn workspace tests test
+        env:
+          API_URL: http://localhost/api
 
       - name: Run acceptance tests
         run: yarn workspace features test
