@@ -1,6 +1,8 @@
 ts-monorepo-template
 --------------------
 
+![tests](https://github.com/gumballhead/ts-monorepo-template/workflows/tests/badge.svg)
+
 ## Setup
 
 You'll need [docker](https://www.docker.com/products/docker-desktop) and [docker-compose](https://docs.docker.com/compose/install/).
