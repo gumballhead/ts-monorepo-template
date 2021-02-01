@@ -1,8 +1,7 @@
 import React from "react";
+import { HealthStatusView } from "./healthstatus";
 
 const App = (): JSX.Element =>
-    <h3 className="greeting">
-        Hello, World!
-    </h3>;
+    <HealthStatusView/>;
 
 export default App;

@@ -1,10 +1,9 @@
 import express from "express";
 
+import { getHealth } from "./health";
+
 const api = express();
 
-api.get("/health", (_request, response) => response.send({
-    uptime: process.uptime(),
-    timestamp: Date.now()
-}));
+api.get("/health", getHealth);
 
 export default api;

@@ -2,7 +2,8 @@
     "extends": "../tsconfig.base.json",
     "include": ["./**/*.ts", "./**/*.tsx"],
     "references": [
-        { "path": "../lib" }
+        { "path": "../lib" },
+        { "path":  "../api" }
     ],
     "compilerOptions": {
         "target": "ESNext",

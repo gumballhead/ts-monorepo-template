@@ -1,0 +1,40 @@
+* {
+    font-family: Helvetica, sans-serif;
+    color: #222222;
+}
+
+.success {
+    color: darkgreen;
+}
+
+.failure {
+    color: darkred;
+}
+
+.api-health {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.api-health .status {
+    text-align: center;
+}
+
+.api-health > div {
+    flex: 1;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.label {
+    float: left
+}
+
+.value {
+    float: left;
+    margin-left: 8px;
+}

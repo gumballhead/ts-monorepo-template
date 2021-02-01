@@ -4,24 +4,25 @@ services:
   sut:
     build:
       context: ..
-      dockerfile: tests/app/Dockerfile
+      dockerfile: features/Dockerfile
     environment:
-      CYPRESS_BASE_URL: http://localhost:8080
+      CYPRESS_BASE_URL: http://app
     depends_on:
-      api:
-        condition: service_healthy
+      - app
 
   app:
     build:
-      context: .
+      context: ..
       dockerfile: app/Dockerfile
+    environment:
+      API_PORT: 3000
     depends_on:
       api:
         condition: service_healthy
 
   api:
     build:
-      context: .
+      context: ..
       dockerfile: api/Dockerfile
     environment:
       API_PORT: 3000
@@ -29,13 +30,13 @@ services:
     depends_on:
       - migrate
     healthcheck:
-      test: ["CMD-SHELL", "node api/healthy"]
+      test: ["CMD-SHELL", "yarn workspace api healthcheck"]
       interval: 1s
       retries: 10
 
   migrate:
     build:
-      context: .
+      context: ..
       dockerfile: db/Dockerfile
     environment:
       DB_URL: postgres://postgres:postgres@db:5432/app

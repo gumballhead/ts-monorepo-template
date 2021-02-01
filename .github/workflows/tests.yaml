@@ -1,11 +1,13 @@
 name: tests
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   tests:
-    name: Run unit and integration tests
+    name: Unit and integration tests
     runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 1
 
     steps:
       - name: Checkout repository
@@ -21,14 +23,16 @@ jobs:
         run: yarn lint
 
       - name: Start app
-        run: yarn dev -d
+        run: yarn dev --detach
 
       - name: Run unit and integration tests
         run: yarn workspace tests test
 
   features:
-    name: Run acceptance tests
+    name: Acceptance tests
     runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 1
 
     steps:
       - name: Checkout repository
@@ -41,7 +45,7 @@ jobs:
         run: yarn install
 
       - name: Start app
-        run: yarn start -d
+        run: yarn start --detach
 
       - name: Run acceptance tests
         run: yarn workspace features test

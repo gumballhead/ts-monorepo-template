@@ -2,10 +2,13 @@
     "extends": "../tsconfig.base.json",
     "include": ["./**/*.ts"],
     "references": [
+        { "path": "../app" },
+        { "path": "../api" },
         { "path": "../db" },
         { "path": "../lib" }
     ],
     "compilerOptions": {
-        "noEmit": false
+        "noEmit": false,
+        "jsx": "react"
     }
 }
