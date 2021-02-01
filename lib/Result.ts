@@ -1,5 +1,5 @@
 /* eslint node/handle-callback-err: 0 */
-import { UnaryOperator } from "./index";
+import type { UnaryOperator } from "./index";
 
 interface IResult<T> {
     get(): T;

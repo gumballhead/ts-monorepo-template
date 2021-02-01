@@ -27,11 +27,13 @@ COPY api ./api
 COPY db ./db
 COPY lib ./lib
 RUN yarn workspace api build
+
+ENV NODE_ENV production
+RUN yarn workspace api install
 RUN yarn cache clean
 
 EXPOSE ${API_PORT}
 USER node
-ENV NODE_ENV production
 
 ENTRYPOINT ["yarn", "workspace", "api"]
 CMD ["start"]

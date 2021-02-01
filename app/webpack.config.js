@@ -26,9 +26,9 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.(ts|tsx)$/,
+            test: /\.tsx?$/,
             use: {
-                loader: "babel-loader"
+                loader: "ts-loader"
             }
         }, {
             test: /\.css$/,
@@ -39,7 +39,7 @@ module.exports = {
             }]
         }, {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/resource',
+            type: "asset/resource"
         }]
     },
     plugins: [

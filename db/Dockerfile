@@ -12,13 +12,16 @@ COPY tsconfig.json tsconfig.base.json ./
 COPY db ./db
 COPY lib ./lib
 RUN yarn workspace db build
-RUN yarn cache clean
 
 FROM node:lts-alpine3.12 as db
+ENV NODE_ENV production
 
 WORKDIR /home/node/app
 COPY --from=build /home/node/app ./
-USER node
 
+RUN yarn workspace db install
+RUN yarn cache clean
+
+USER node
 ENTRYPOINT ["yarn", "workspace", "db"]
 CMD ["migrate", "up"]

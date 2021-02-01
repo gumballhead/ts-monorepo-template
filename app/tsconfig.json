@@ -6,6 +6,7 @@
         { "path":  "../api" }
     ],
     "compilerOptions": {
+        "noEmit": false,
         "target": "ESNext",
         "lib": [
             "dom",

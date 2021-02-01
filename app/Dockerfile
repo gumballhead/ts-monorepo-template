@@ -7,6 +7,8 @@ COPY package.json .yarnrc.yml yarn.lock ./
 COPY .yarn ./.yarn
 COPY app/package.json ./app/
 COPY lib/package.json ./lib/
+COPY db/package.json ./db/
+COPY api/package.json ./api/
 RUN yarn workspace app install
 
 COPY tsconfig.json tsconfig.base.json ./
@@ -21,9 +23,10 @@ COPY --from=base /home/node/app ./
 
 RUN yarn workspace app install
 COPY app ./app
+COPY api ./api
 COPY lib ./lib
+COPY db ./db
 RUN yarn workspace app build
-RUN yarn cache clean
 
 FROM nginx:stable as router
 ENV API_PORT ${API_PORT}

@@ -18,7 +18,9 @@ services:
       APP_PORT: ${APP_PORT}
     volumes:
       - ./app:/home/node/app/app
+      - ./api:/home/node/app/api
       - ./lib:/home/node/app/lib
+      - ./db:/home/node/app/db
 
   api:
     build:
