@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { renderHook } from "@testing-library/react-hooks";
-import { useAsyncTask } from "app/api";
+import { usePromise } from "app/api";
 import { AsyncTask } from "lib";
 
 describe("useAsyncTask hook", () => {
@@ -12,7 +12,7 @@ describe("useAsyncTask hook", () => {
 
     test("useAsyncTask success", async () => {
         const promise = () => new Promise(resolve => setTimeout(resolve, 100));
-        const { result, waitForNextUpdate } = renderHook(() => useAsyncTask(promise));
+        const { result, waitForNextUpdate } = renderHook(() => usePromise(promise));
         expect(AsyncTask.isLoading(result.current)).toBe(true);
         expect(result.current.when(matcher)).toBe("⏳");
 
@@ -23,7 +23,7 @@ describe("useAsyncTask hook", () => {
 
     test("useAsyncTask failure", async () => {
         const promise = () => new Promise((resolve, reject) => setTimeout(reject, 100));
-        const { result, waitForNextUpdate } = renderHook(() => useAsyncTask(promise));
+        const { result, waitForNextUpdate } = renderHook(() => usePromise(promise));
         expect(AsyncTask.isLoading(result.current)).toBe(true);
         expect(result.current.when(matcher)).toBe("⏳");
 

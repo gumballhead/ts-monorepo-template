@@ -1,2 +1,2 @@
 export { get, create, update, destroy } from "./request";
-export { useAsyncTask } from "./useAsyncTask";
+export { useResult, usePromise } from "./useResult";

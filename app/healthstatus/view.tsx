@@ -1,5 +1,5 @@
 import React from "react";
-import { useAsyncTask } from "../api";
+import { useResult } from "../api";
 import getHealthStatus from "./request";
 import HealthStatusViewModel from "./viewmodel";
 import "../assets/healthstatus.css";
@@ -26,7 +26,7 @@ const Failure = (): JSX.Element =>
 
 const HealthStatusView = (): JSX.Element =>
     <div className="api-health">{
-        useAsyncTask(getHealthStatus).when({
+        useResult(getHealthStatus).when({
             isLoading: Loading,
             isSuccess: ApiStatus,
             isFailure: Failure
