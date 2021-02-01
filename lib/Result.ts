@@ -1,3 +1,4 @@
+/* eslint node/handle-callback-err: 0 */
 import { UnaryOperator } from "./index";
 
 interface IResult<T> {

@@ -13,7 +13,7 @@
         "dev": "yarn predev && DOCKER_BUILDKIT=1 docker-compose up --build",
         "build": "DOCKER_BUILDKIT=1 docker-compose --file docker-compose.yaml build",
         "prestart": "yarn clean && docker-compose --file docker-compose.yaml down",
-        "start": "yarn prestart && DOCKER_BUILDKIT=1 docker-compose --file docker-compose.yaml --build up",
+        "start": "yarn prestart && DOCKER_BUILDKIT=1 docker-compose --file docker-compose.yaml up --build",
         "test": "yarn workspace app test"
     },
     "devDependencies": {
