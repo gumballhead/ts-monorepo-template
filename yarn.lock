@@ -4921,9 +4921,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^6.3.0":
-  version: 6.3.0
-  resolution: "cypress@npm:6.3.0"
+"cypress@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "cypress@npm:6.4.0"
   dependencies:
     "@cypress/listr-verbose-renderer": ^0.4.1
     "@cypress/request": ^2.88.5
@@ -4939,6 +4939,7 @@ __metadata:
     cli-table3: ~0.6.0
     commander: ^5.1.0
     common-tags: ^1.8.0
+    dayjs: ^1.9.3
     debug: ^4.1.1
     eventemitter2: ^6.4.2
     execa: ^4.0.2
@@ -4953,7 +4954,7 @@ __metadata:
     lodash: ^4.17.19
     log-symbols: ^4.0.0
     minimist: ^1.2.5
-    moment: ^2.27.0
+    moment: ^2.29.1
     ospath: ^1.2.2
     pretty-bytes: ^5.4.1
     ramda: ~0.26.1
@@ -4965,7 +4966,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: 05841960db8d00fd82d25ee57004a3c292e4fc5d00ee21d2779833eee742899ee5b8346918c5201ce42b05d708a3136c9dbcf2decd57ad0fc5793e16fa6cc073
+  checksum: 90919d83dab9f291b5c1178dbd68c1fc084039991273e69f7be30cfaf788d2e8e9989671ef22322d906e7c753125f10fad06a7f87b57d353514bdba1a0b5279d
   languageName: node
   linkType: hard
 
@@ -5010,6 +5011,13 @@ __metadata:
   version: 1.30.1
   resolution: "date-fns@npm:1.30.1"
   checksum: 351fc19b04d79de77823a90213b87039392528fdd44a42e3e87f28333e76a48f99e4fbb37c9823b6284f7eb0ef88368fafe61749d6eff173241170977751fa47
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.9.3":
+  version: 1.10.4
+  resolution: "dayjs@npm:1.10.4"
+  checksum: 3b7bb2232fff808209870bc72d4b2000941a1aa45f0226e2907f9dd1dda306d4b3a1eb9058450fd2c324b01a007a37809ac6f9b525806a86902c55e2934cd5d5
   languageName: node
   linkType: hard
 
@@ -6454,7 +6462,7 @@ __metadata:
   resolution: "features@workspace:features"
   dependencies:
     "@cypress/browserify-preprocessor": ^3.0.1
-    cypress: ^6.3.0
+    cypress: ^6.4.0
     cypress-cucumber-preprocessor: ^4.0.0
     resolve: ^1.19.0
     typescript: ^4.1.3
@@ -9567,7 +9575,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"moment@npm:>= 2.9.0, moment@npm:^2.26.0, moment@npm:^2.27.0, moment@npm:^2.29.1":
+"moment@npm:>= 2.9.0, moment@npm:^2.26.0, moment@npm:^2.29.1":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
