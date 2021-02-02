@@ -7,8 +7,7 @@ Given("an app", () => {
 });
 
 When("I load the app", () => {
-    cy.visit(location);
-    cy.get(".api-health").as("api-health");
+    cy.visit(location).get(".api-health").as("api-health").contains("Loading...");
 });
 
 Then("I see the api's health status", () => {
