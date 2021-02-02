@@ -21,7 +21,6 @@ FROM node:lts-alpine3.12 as build
 WORKDIR /home/node/app
 COPY --from=base /home/node/app ./
 
-RUN yarn workspace app install
 COPY app ./app
 COPY api ./api
 COPY lib ./lib

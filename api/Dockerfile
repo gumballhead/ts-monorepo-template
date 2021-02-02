@@ -22,16 +22,13 @@ ENV API_PORT ${API_PORT}
 WORKDIR /home/node/app
 COPY --from=base /home/node/app ./
 
-RUN yarn workspace api install
 COPY api ./api
 COPY db ./db
 COPY lib ./lib
 RUN yarn workspace api build
-
-ENV NODE_ENV production
-RUN yarn workspace api install
 RUN yarn cache clean
 
+ENV NODE_ENV production
 EXPOSE ${API_PORT}
 USER node
 
