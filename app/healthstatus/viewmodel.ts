@@ -1,5 +1,5 @@
 import moment from "moment";
-import { HealthStatus } from "api/health";
+import type { HealthStatus } from "api/health";
 
 export default class HealthStatusViewModel {
     public constructor(private readonly status: HealthStatus) {}
