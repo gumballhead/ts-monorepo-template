@@ -30,7 +30,7 @@ services:
     depends_on:
       - migrate
     healthcheck:
-      test: ["CMD-SHELL", "yarn workspace api healthcheck"]
+      test: ["CMD-SHELL", "yarn workspace api healthy"]
       interval: 1s
       retries: 10
 

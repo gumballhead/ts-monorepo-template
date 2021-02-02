@@ -21,7 +21,7 @@ services:
       API_PORT: ${API_PORT}
       DB_URL: postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
     healthcheck:
-      test: ["CMD-SHELL", "yarn workspace api healthcheck"]
+      test: ["CMD-SHELL", "yarn workspace api healthy"]
       interval: 1s
       retries: 10
     depends_on:

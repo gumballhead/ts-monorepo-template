@@ -7,7 +7,7 @@
         "clean": "tsc -b --clean",
         "dev": "nodemon",
         "start": "node server.js",
-        "healthcheck": "node health/check",
+        "healthy": "node health/check",
         "pretest": "DOCKER_BUILDKIT=1 docker-compose --file docker-compose.test.yaml build && docker-compose --file docker-compose.test.yaml down",
         "test": "yarn pretest && docker-compose --file docker-compose.test.yaml run --rm sut"
     },
