@@ -1,5 +1,4 @@
 import express from "express";
-
 import { getHealth } from "./health";
 
 const api = express();

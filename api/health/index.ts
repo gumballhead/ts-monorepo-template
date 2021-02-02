@@ -1,1 +1,1 @@
-export { HealthStatus, default as getHealth } from "./handler";
+export { HealthStatus, default as getHealth } from "./getHealth";
